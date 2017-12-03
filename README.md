@@ -169,8 +169,10 @@ For this week's lab I would like you to add the following functionality:
 * Add a list of some sort to your cash register to keep track of items that are part of the current transaction
 * Add a total to the list (you can do this purely in javascript if you like)
 * Add the ability to remove an item from your list by clicking on it.
- 
+
 You can look at my [online example](http://146.57.34.125:1337/listTest.html), to see what I'd like you to aim for.
+
+Also be certain that you create a document detailing your API (include this in your repository) as well as your group members and database.
 
 If you totally nail this you can begin preparing for next week by adding the ability to
 
