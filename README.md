@@ -32,7 +32,7 @@ This will be implemented by your node server which you will run by typing some v
 
 For example, here is a slimmed down version of `express.js`.  I have removed functional details in order to let you add those back in.  I implemented this version without Promises or connectionPools, but you probably want to to add those in.  The repository ONLY has a stub.
 
-```{js}
+```js
 var express=require('express'),
 mysql=require('mysql'),
 credentials=require('./credentials.json'),
@@ -73,7 +73,7 @@ app.listen(port);
 
 You have done the tutorials (and many of you have worked with angular in other classes), so I'll just provide a sample of the sort of thing that I used to implement "clickability" on the item buttons (note:  I did NOT add the css file that I used):
 
-```{html}
+```html
 <!doctype html>
 <html>
 <head lang="en">
@@ -106,7 +106,7 @@ You have done the tutorials (and many of you have worked with angular in other c
 You will notice that the Angular template loads a javascript file named `click.js` (which I have included in the public subdirectory).  Most of this is boiler plate material... but notice how we use `$scope.` to make functionality defined in `click.js` available in our web-page.
 
 
-```{js}
+```js
 angular.module('buttons',[])
   .controller('buttonCtrl',ButtonCtrl)
   .factory('buttonApi',buttonApi)
