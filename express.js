@@ -19,6 +19,14 @@ app.get("/buttons",function(req,res){
      res.send(rows);
   }})(res));
 });
+app.get("/cart",function(req,res){
+  var sql = 'SELECT * FROM jafi.cart';
+  connection.query(sql,(function(res){return function(err,rows,fields){
+     if(err){console.log("We have an error:");
+             console.log(err);}
+     res.send(rows);
+  }})(res));
+});
 app.get("/click",function(req,res){
   var id = req.param('id');
   if(id==1){

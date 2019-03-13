@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
     <script src="click.js"></script>
+    <script src="cart.js"></script>
+
 </head>
 <body ng-app="buttons">
 <div class="container-fluid">
@@ -20,6 +22,40 @@
          </div>
        </div>
      </div>
+</div>
+<div align="right" ng-controller="buttonCtrl">
+  <h1>Cart</h1>
+  <table id="cart"  style="width:50%" border="3px solid black" ng-for="item in cart">
+    <tr>
+      <th>ID</th>
+      <th>Item</th>
+      <th>Price</th>
+    </tr>
+
+    
+    <tr ng-repeat="item in cart">
+      <td>{{item.item_id}}</td>
+      <td>{{item.item}}</td>
+      <td>{{item.price}}</td>
+    </tr>
+
+<!--
+  <tr>
+    <td>humburgers</td>
+  </tr>
+  <tr>
+    <td>bananas</td>
+  </tr>
+  <tr>
+    <td>hotdogs</td>
+  </tr>
+  <tr>
+    <td>milkduds</td>
+  </tr>
+-->
+  </table>
+
+
 </div>
 </body>
 </html>
