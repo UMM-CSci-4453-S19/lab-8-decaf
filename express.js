@@ -43,6 +43,14 @@ app.get("/click",function(req,res){
     var sql = "insert into jafi.cart values('milkduds',1.50,'null')";
     console.log("Attempting sql ->"+sql+"<-");
   }
+  else if(id==5){
+    var sql = "truncate jafi.cart";
+    console.log("Attempting sql ->"+sql+"<-");
+  }
+  else if(id==8){
+    var sql "delete from jafi.cart where jafi.cart.item_id=" + id;
+    console.log("here");
+  }
 
 
   connection.query(sql,(function(res){return function(err,rows,fields){

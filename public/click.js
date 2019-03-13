@@ -6,6 +6,7 @@ angular.module('buttons',[])
   function ButtonCtrl($scope,buttonApi){
      $scope.buttons=[]; //Initially all was still
      $scope.cart=[];
+     $scope.total=0;
      $scope.errorMessage='';
      $scope.isLoading=isLoading;
      $scope.refreshButtons=refreshButtons;
@@ -53,6 +54,8 @@ angular.module('buttons',[])
           .error(function(){$scope.errorMessage="Unable click";});
       refreshCart();
     }
+
+    
 
     refreshButtons();  //make sure the buttons are loaded
     refreshCart();
