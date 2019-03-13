@@ -6,12 +6,13 @@ angular.module('buttons',[])
   function ButtonCtrl($scope,buttonApi){
      $scope.buttons=[]; //Initially all was still
      $scope.cart=[];
-     $scope.total=0;
      $scope.errorMessage='';
      $scope.isLoading=isLoading;
      $scope.refreshButtons=refreshButtons;
      $scope.buttonClick=buttonClick;
      $scope.itemClick=itemClick;
+     $scope.total;
+     $scope.getTotal=getTotal;
 
      var loading = false;
 
@@ -54,6 +55,7 @@ angular.module('buttons',[])
           .success(function(){})
           .error(function(){$scope.errorMessage="Unable click";});
       refreshCart();
+      getTotal();
     }
 
     function itemClick($event){
@@ -63,10 +65,26 @@ angular.module('buttons',[])
           .success(function(){})
           .error(function(){$scope.errorMessage="Unable click";});
       refreshCart();
+      getTotal();
+    }
+
+    function getTotal(){
+      console.log("In getTotal()");
+      buttonApi.getTotal()
+        .success(function(data){
+          console.log("total = " + data);
+           $scope.total=data;
+           loading=false;
+        })
+        .error(function () {
+            $scope.errorMessage="Unable to get total:  Database request failed";
+            loading=false;
+        });
     }
 
     refreshButtons();  //make sure the buttons are loaded
     refreshCart();
+    getTotal();
   }
 
 
@@ -78,7 +96,7 @@ angular.module('buttons',[])
       },
       clickButton: function(id){
         var url = apiUrl+'/click?id='+id;
-  //      console.log("Attempting with "+url);
+  //      console.log("Attempting with "uttons+url);
         return $http.get(url); // Easy enough to do this way
       },
 
@@ -90,5 +108,9 @@ angular.module('buttons',[])
         var url = apiUrl + '/cart';
         return $http.get(url);
       },
+      getTotal: function(){
+        var url = apiUrl + "/total";
+        return $http.get(url);
+      }
    };
   }

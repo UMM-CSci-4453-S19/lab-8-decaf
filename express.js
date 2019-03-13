@@ -68,6 +68,17 @@ app.get("/delete",function(req,res){
   }})(res));
 });
 
+app.get("/total",function(req,res){
+  var sql = "select sum(price) from jafi.cart;"
+  console.log("Attempting sql ->"+sql+"<-");
+
+  connection.query(sql,(function(res){return function(err,rows,fields){
+     if(err){console.log("Total error:");
+             console.log(err);}
+     res.send(rows); // Let the upstream guy know how it went
+  }})(res));
+});
+
 // Your other API handlers go here!
 
 app.listen(port);
