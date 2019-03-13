@@ -11,7 +11,8 @@
 <body ng-app="buttons">
 <div class="container-fluid">
     <h1>Cash Register (with buttons)</h1>
-    <div id="buttons" ng-controller="buttonCtrl" >
+    <div id="cart" ng-controller="buttonCtrl">
+    <div id="buttons" >
        <div ng-repeat="button in buttons">
          <div style="position:absolute;left:{{button.left}}px;top:{{button.top}}px"><button id="{{button.button_id}}" ng-click="buttonClick($event,'button.button_id');" >{{button.label}}</button></div>
        </div>
@@ -21,8 +22,7 @@
          </div>
        </div>
      </div>
-</div>
-<div align="right" ng-controller="buttonCtrl">
+<div align="right">
   <h1>Cart Total:{{total}}</h1>
   <table id="cart"  style="width:50%" border="3px solid black" ng-for="item in cart">
     <tr>
@@ -37,7 +37,7 @@
       <td>{{item.item_id}}</td>
       <td>{{item.item}}</td>
       <td>{{item.price}}</td>
-      <td><button id={{item.item_id}} ng-click="buttonClick($event,'button.button_id');">delete</button></td>
+      <td><button id="{{item.item_id}}" ng-click="itemClick($event,'item.item_id');">delete</button></td>
 
     </tr>
 
@@ -57,7 +57,8 @@
 -->
   </table>
 
-
+</div>
+</div>
 </div>
 </body>
 </html>

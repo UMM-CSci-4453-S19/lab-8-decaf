@@ -11,6 +11,7 @@ angular.module('buttons',[])
      $scope.isLoading=isLoading;
      $scope.refreshButtons=refreshButtons;
      $scope.buttonClick=buttonClick;
+     $scope.itemClick=itemClick;
 
      var loading = false;
 
@@ -55,11 +56,19 @@ angular.module('buttons',[])
       refreshCart();
     }
 
-    
+    function itemClick($event){
+      console.log($event.target.id);
+       $scope.errorMessage='';
+       buttonApi.clickItem($event.target.id)
+          .success(function(){})
+          .error(function(){$scope.errorMessage="Unable click";});
+      refreshCart();
+    }
 
     refreshButtons();  //make sure the buttons are loaded
     refreshCart();
   }
+
 
   function buttonApi($http,apiUrl){
     return{
@@ -72,9 +81,14 @@ angular.module('buttons',[])
   //      console.log("Attempting with "+url);
         return $http.get(url); // Easy enough to do this way
       },
+
+      clickItem: function(id){
+        var url = apiUrl+'/delete?id='+id;
+        return $http.get(url);
+      },
       getCart: function(){
         var url = apiUrl + '/cart';
         return $http.get(url);
-      }
+      },
    };
   }

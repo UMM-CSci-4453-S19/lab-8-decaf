@@ -47,11 +47,6 @@ app.get("/click",function(req,res){
     var sql = "truncate jafi.cart";
     console.log("Attempting sql ->"+sql+"<-");
   }
-  else if(id==8){
-    var sql "delete from jafi.cart where jafi.cart.item_id=" + id;
-    console.log("here");
-  }
-
 
   connection.query(sql,(function(res){return function(err,rows,fields){
      if(err){console.log("We have an insertion error:");
@@ -59,6 +54,20 @@ app.get("/click",function(req,res){
      res.send(err); // Let the upstream guy know how it went
   }})(res));
 });
+
+app.get("/delete",function(req,res){
+  var id = req.param('id');
+
+  var sql = "delete from jafi.cart where item_id=" + id;
+  console.log("Attempting sql ->"+sql+"<-");
+
+  connection.query(sql,(function(res){return function(err,rows,fields){
+     if(err){console.log("We have an deletion error:");
+             console.log(err);}
+     res.send(err); // Let the upstream guy know how it went
+  }})(res));
+});
+
 // Your other API handlers go here!
 
 app.listen(port);
